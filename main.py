@@ -6,10 +6,10 @@ from flask_cors import CORS
 from tabulate import tabulate
 from term_graph import getData, getArticleIdAuthorReferencesAndAuthor, author_matrixs, getTable2Data, makeTable2, addTable2TotalRowAndColoumn, makeNewAdjMatrix, rank, makeTermGraph
 
-app = Flask(__name__)
-CORS(app)
+application = Flask(__name__)
+CORS(application)
 
-@app.route('/data/<type>/<name>', methods=['GET', 'POST'])
+@application.route('/data/<type>/<name>', methods=['GET', 'POST'])
 def data(type, name):
     if request.method == 'POST' or request.method == 'GET':
         start_time = time.time()
@@ -172,4 +172,4 @@ def data(type, name):
             return tmp_dict
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    application.run(host='0.0.0.0')
